@@ -45,7 +45,9 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -r '${{ github.workspace }}/build.zip' '${{ github.workspace }}/build/'
-      
+          
+      - uses: actions/checkout@v2
+    
       - name: Upload Installer
         uses: actions/upload-artifact@v3
         with:
