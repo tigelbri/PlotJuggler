@@ -39,8 +39,12 @@ jobs:
         shell: pwsh
         run: >
           cmake -Ax64 -T host=x64 -B build -DCMAKE_INSTALL_PREFIX=install PlotJuggler;
-          cmake --build build --target install;
-          zip -r '${{ github.workspace }}/build.zip' '${{ github.workspace }}/build/'
+          cmake --build build --target install
+          
+      - name: Zipit
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -r '${{ github.workspace }}/build.zip' '${{ github.workspace }}/build/'
       
       - name: Upload Installer
         uses: actions/upload-artifact@v3
